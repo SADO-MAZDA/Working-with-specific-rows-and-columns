@@ -10,12 +10,15 @@ namespace Сумма_и_произведение_в_матрице
     {
         static void Main(string[] args)
         {
-            int[,] array = new int[4, 4];
+            int amountOfCharInLine = 4;
+            int amountOFCharInColimn = 4;
+            int[,] array = new int[amountOfCharInLine, amountOFCharInColimn];
             int summSecondLine = 0;
-            int multiplicationOneColumm = 1;
-            int markerOneColumm = 0;
+            int multiplicationOneColumn = 1;
             int maxValueInMatrix = 10;
             int minValueInMatrix = 1;
+            int numberOneColumn = 0;
+            int numberSecondLine = 1;
             Random random = new Random();
             Console.WriteLine("Дана матрица ");
 
@@ -25,18 +28,20 @@ namespace Сумма_и_произведение_в_матрице
                 {
                     array[i, j] = random.Next(minValueInMatrix, maxValueInMatrix);
                     Console.Write(array[i, j] + " ");
-
-                    if (markerOneColumm > 0 && markerOneColumm <2)
-                    {
-                        summSecondLine += array[1, j];
-                    }
                 }
-                markerOneColumm++;
-                multiplicationOneColumm *= array[i,0];
                 Console.WriteLine();
             }
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                multiplicationOneColumn *= array[i, numberOneColumn];
+            }
+            Console.WriteLine(multiplicationOneColumn + "- Произведение первого столбца");
+
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                summSecondLine += array[numberSecondLine, j];
+            }
             Console.WriteLine(summSecondLine + " - Сумма второй строки");
-            Console.WriteLine(multiplicationOneColumm + "- Произведение первого столбца");
         }
     }
 }
