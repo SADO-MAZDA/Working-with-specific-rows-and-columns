@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Сумма_и_произведение_в_матрице
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[,] array = new int[4, 4];
+            int summSecondLine = 0;
+            int multiplicationOneColumm = 1;
+            int markerOneColumm = 0;
+            int maxValueInMatrix = 10;
+            int minValueInMatrix = 1;
+            Random random = new Random();
+            Console.WriteLine("Дана матрица ");
+
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    array[i, j] = random.Next(minValueInMatrix, maxValueInMatrix);
+                    Console.Write(array[i, j] + " ");
+
+                    if (markerOneColumm > 0 && markerOneColumm <2)
+                    {
+                        summSecondLine += array[1, j];
+                    }
+                }
+                markerOneColumm++;
+                multiplicationOneColumm *= array[i,0];
+                Console.WriteLine();
+            }
+            Console.WriteLine(summSecondLine + " - Сумма второй строки");
+            Console.WriteLine(multiplicationOneColumm + "- Произведение первого столбца");
+        }
+    }
+}
