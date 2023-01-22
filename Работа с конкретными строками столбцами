@@ -29,18 +29,22 @@ namespace Сумма_и_произведение_в_матрице
                     array[i, j] = random.Next(minValueInMatrix, maxValueInMatrix);
                     Console.Write(array[i, j] + " ");
                 }
+
                 Console.WriteLine();
             }
+
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 multiplicationOneColumn *= array[i, numberOneColumn];
             }
+
             Console.WriteLine(multiplicationOneColumn + "- Произведение первого столбца");
 
             for (int j = 0; j < array.GetLength(1); j++)
             {
                 summSecondLine += array[numberSecondLine, j];
             }
+
             Console.WriteLine(summSecondLine + " - Сумма второй строки");
         }
     }
